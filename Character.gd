@@ -52,9 +52,11 @@ func _physics_process(delta):
 		if friction:
 			velocity.x = lerp(velocity.x, 0, 0.05)
 	print(last_velocity.y - velocity.y)
-	if !is_on_floor():
+	
+	if velocity.y > 0:
 		velocity.y += delta * GRAVITY * FALL_MULTIPLIER - 1
-		
+	
+	if velocity.y < 0:	
 		if !Input.is_action_pressed("ui_jump"):
 			velocity.y += delta * GRAVITY * LOW_JUMP_MULTIPLIER - 1
 	
