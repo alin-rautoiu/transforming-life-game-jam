@@ -1,10 +1,18 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://monstru fundal.png" type="Texture" id=1]
 [ext_resource path="res://Character.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Platform.tscn" type="PackedScene" id=3]
-[ext_resource path="res://NextLevel.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://water.shader" type="Shader" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://Water.gd" type="Script" id=5]
+[ext_resource path="res://Platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://NextLevel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Button.tscn" type="PackedScene" id=8]
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 3 )
+shader_param/green_tint = Color( 0.121569, 1, 0, 1 )
+shader_param/sprite_scale = Vector2( 36.69, 12.204 )
 
 [sub_resource type="PhysicsMaterial" id=1]
 
@@ -43,7 +51,7 @@ position = Vector2( 818.716, 75.791 )
 position = Vector2( 606.753, 116.011 )
 
 [node name="monstru fundal" type="Sprite" parent="Node2D"]
-position = Vector2( 2143.43, -4822.45 )
+position = Vector2( 2140.34, -4822.45 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 1 )
 
@@ -58,48 +66,57 @@ limit_left = 365
 limit_right = 3000
 limit_bottom = 999999999
 limit_smoothed = true
+drag_margin_bottom = 0.01
 editor_draw_limits = true
+editor_draw_drag_margin = true
 
-[node name="Platform2" parent="." instance=ExtResource( 3 )]
+[node name="Water" type="Sprite" parent="."]
+material = SubResource( 4 )
+position = Vector2( 1046.33, 667.269 )
+scale = Vector2( 37.7553, 18.0407 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+
+[node name="Platform2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 362.43, -197.082 )
 
-[node name="Platform3" parent="." instance=ExtResource( 3 )]
+[node name="Platform3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2160.18, -841.426 )
 
-[node name="Platform4" parent="." instance=ExtResource( 3 )]
+[node name="Platform4" parent="." instance=ExtResource( 6 )]
 position = Vector2( -79.0399, -593.414 )
 
 [node name="Platforme Jos" type="Position2D" parent="."]
 editor/display_folded = true
 position = Vector2( -202.713, -61.7432 )
 
-[node name="Platform5" parent="Platforme Jos" instance=ExtResource( 3 )]
+[node name="Platform5" parent="Platforme Jos" instance=ExtResource( 6 )]
 position = Vector2( -762.379, 463.013 )
 
-[node name="Platform6" parent="Platforme Jos" instance=ExtResource( 3 )]
+[node name="Platform6" parent="Platforme Jos" instance=ExtResource( 6 )]
 position = Vector2( -237.694, 467.439 )
 
-[node name="Platform7" parent="Platforme Jos" instance=ExtResource( 3 )]
+[node name="Platform7" parent="Platforme Jos" instance=ExtResource( 6 )]
 position = Vector2( 280.728, 463.013 )
 
-[node name="Platform8" parent="Platforme Jos" instance=ExtResource( 3 )]
+[node name="Platform8" parent="Platforme Jos" instance=ExtResource( 6 )]
 position = Vector2( 876.119, 463.013 )
 
-[node name="Platform9" parent="Platforme Jos" instance=ExtResource( 3 )]
+[node name="Platform9" parent="Platforme Jos" instance=ExtResource( 6 )]
 position = Vector2( 1422.18, 463.013 )
 
-[node name="Platform10" parent="Platforme Jos" instance=ExtResource( 3 )]
+[node name="Platform10" parent="Platforme Jos" instance=ExtResource( 6 )]
 position = Vector2( 2006.67, 450.166 )
 
-[node name="Platform11" parent="Platforme Jos" instance=ExtResource( 3 )]
+[node name="Platform11" parent="Platforme Jos" instance=ExtResource( 6 )]
 position = Vector2( -1356.15, 463.444 )
 
-[node name="Area2D" parent="." instance=ExtResource( 4 )]
+[node name="Area2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 994.274, 670.26 )
 spawn_point_path = NodePath("../StartingPositions/Level2")
 limits = Vector2( 5000, 1500 )
 
-[node name="Area2D2" parent="." instance=ExtResource( 4 )]
+[node name="Area2D2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2759.69, -482.362 )
 spawn_point_path = NodePath("../StartingPositions/Level1")
 limits = Vector2( 3000, 365 )
@@ -130,7 +147,7 @@ position = Vector2( 818.716, 75.791 )
 position = Vector2( 5.84399, 3.89612 )
 polygon = PoolVector2Array( 361.244, 715.848, 1009.37, 793.385, 1510.01, 744.685, 1864.55, 579.103, 2055.45, 415.47, 2191.81, 57.0344, 2167.83, -167.354, 2103.39, -481.394, 2236.33, -531.463, 2297.62, -217.824, 2308.43, 74.1836, 2275.99, 395.032, 2330.06, 499.578, 2575.2, 625.754, 2575.2, 816.821, 350.897, 820.426 )
 
-[node name="Button" parent="." instance=ExtResource( 5 )]
+[node name="Button" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1065.12, 201.562 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Button"]
