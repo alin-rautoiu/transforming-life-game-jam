@@ -39,7 +39,7 @@ void fragment(){
 	
 	vec4 color = texture(SCREEN_TEXTURE, SCREEN_UV + distort_sum);
 //	color.rgb = mix(color.rgb, vec3(0.5), 1.4);
-	color = mix(color, green_tint, 0.1);
+//	color = mix(color, green_tint, 0.1);
 	
 	COLOR = color;
 }

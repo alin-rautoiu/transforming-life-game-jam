@@ -13,6 +13,7 @@ var velocity = Vector2()
 var last_velocity = Vector2()
 var was_on_floor = true
 var camera_limits = Vector2(3000, 365)
+var last_spawn_point: Vector2 = Vector2(1030.991, -182.144)
 var block_inputs = false
 const UP = Vector2(0, -1)
 
@@ -67,7 +68,7 @@ func _physics_process(delta):
 			velocity.y += delta * GRAVITY * LOW_JUMP_MULTIPLIER - 1
 	
 	last_velocity = velocity
-	if get_slide_collision(get_slide_count() - 1):		
+	if get_slide_count() > 0 and get_slide_collision(get_slide_count() - 1):		
 		var angle = UP.angle_to(get_slide_collision(get_slide_count() - 1).normal)
 		if (abs(UP.angle_to(get_slide_collision(get_slide_count() - 1).normal)) < 0.45):
 			rotation = lerp(rotation, UP.angle_to(get_slide_collision(get_slide_count() - 1).normal), 0.5)
@@ -77,25 +78,36 @@ func _physics_process(delta):
 
 func move_to(spawn_position, limits):
 	global_position = spawn_position
+	last_spawn_point = spawn_position
 	camera_limits = limits
+	block_inputs = true
 	shift_camera_limits(limits.y, limits.x)
 
 func remove_camera_limits():	
+	block_inputs = true
 	shift_camera_limits(-10000000, 10000000)
 
 func reset_camera_limits():	
 	shift_camera_limits(camera_limits.y, camera_limits.x)
 	
 func shift_camera_limits(left, right):
-	block_inputs = true
-	for i in range(0,33):
-		yield(get_tree().create_timer(0.03), "timeout")
-		$Camera2D.limit_left = lerp($Camera2D.limit_left, left, 0.03)
-		$Camera2D.limit_right = lerp($Camera2D.limit_right, right, 0.03)
-#	
+	for i in range(0,34):
+		yield(get_tree().create_timer(0.02), "timeout")
+		$Camera2D.limit_left = lerp($Camera2D.limit_left, left, 0.11)
+		$Camera2D.limit_right = lerp($Camera2D.limit_right, right, 0.11)
+	
+	$Camera2D.limit_left = left
+	$Camera2D.limit_right = right
 	print(block_inputs)
 	block_inputs = false
-	
+
+func dissolve():
+	print("dissolve")
+	$AnimationPlayer.play("Dissolve")
+	yield(get_tree().create_timer(0.5), "timeout")
+	global_position = last_spawn_point
+	$AnimationPlayer.play_backwards("Dissolve")
+
 func is_not_landing():
 	print()
 	return $CharacterSprite.animation != "land" or ($CharacterSprite.animation == "land" and $CharacterSprite.frame == 7)

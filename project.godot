@@ -73,5 +73,4 @@ ui_jump={
 [rendering]
 
 quality/filters/use_nearest_mipmap_filter=true
-quality/subsurface_scattering/quality=2
 environment/default_environment="res://default_env.tres"
