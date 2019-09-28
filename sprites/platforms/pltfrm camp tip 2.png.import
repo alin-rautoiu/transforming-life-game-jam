@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/virus jump 7.png-66556a6c096b55ac51055a38501fa2df.stex"
+path="res://.import/pltfrm camp tip 2.png-68c94c89e4d65aa1e9c954b92f85ceaf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/character/virus jump 7.png"
-dest_files=[ "res://.import/virus jump 7.png-66556a6c096b55ac51055a38501fa2df.stex" ]
+source_file="res://sprites/platforms/pltfrm camp tip 2.png"
+dest_files=[ "res://.import/pltfrm camp tip 2.png-68c94c89e4d65aa1e9c954b92f85ceaf.stex" ]
 
 [params]
 

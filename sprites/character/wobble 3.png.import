@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/virus jump 7.png-66556a6c096b55ac51055a38501fa2df.stex"
+path="res://.import/wobble 3.png-4fe2fe5f7335acbcf84bc60dc52056d6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/character/virus jump 7.png"
-dest_files=[ "res://.import/virus jump 7.png-66556a6c096b55ac51055a38501fa2df.stex" ]
+source_file="res://sprites/character/wobble 3.png"
+dest_files=[ "res://.import/wobble 3.png-4fe2fe5f7335acbcf84bc60dc52056d6.stex" ]
 
 [params]
 

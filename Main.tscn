@@ -1,18 +1,82 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://monstru fundal 1.png" type="Texture" id=1]
 [ext_resource path="res://monstru negru.png" type="Texture" id=2]
-[ext_resource path="res://Character.tscn" type="PackedScene" id=3]
-[ext_resource path="res://water.shader" type="Shader" id=4]
-[ext_resource path="res://icon.png" type="Texture" id=5]
-[ext_resource path="res://Water.gd" type="Script" id=6]
-[ext_resource path="res://WaterArea.gd" type="Script" id=7]
-[ext_resource path="res://Platform.tscn" type="PackedScene" id=8]
-[ext_resource path="res://NextLevel.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Button.tscn" type="PackedScene" id=10]
+[ext_resource path="res://PowerUpSwim.gd" type="Script" id=3]
+[ext_resource path="res://sprites/character/powerup tepos.png" type="Texture" id=4]
+[ext_resource path="res://light.png" type="Texture" id=5]
+[ext_resource path="res://Character.tscn" type="PackedScene" id=6]
+[ext_resource path="res://water.shader" type="Shader" id=7]
+[ext_resource path="res://icon.png" type="Texture" id=8]
+[ext_resource path="res://Water.gd" type="Script" id=9]
+[ext_resource path="res://WaterArea.gd" type="Script" id=10]
+[ext_resource path="res://NextLevel.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Button.tscn" type="PackedScene" id=12]
+[ext_resource path="res://platforms_2.tres" type="TileSet" id=13]
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 39.6507
+
+[sub_resource type="Animation" id=5]
+resource_name = "powerup"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("powerup tepos:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 61.08 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.9, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.8, 0.6, 0.9, 0.8 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "powerup"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("powerup tepos:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 61.08 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.9, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.8, 0.6, 0.9, 0.8 ]
+}
 
 [sub_resource type="ShaderMaterial" id=4]
-shader = ExtResource( 4 )
+shader = ExtResource( 7 )
 shader_param/green_tint = Color( 0.121569, 1, 0, 1 )
 shader_param/sprite_scale = Vector2( 36.69, 12.204 )
 
@@ -50,12 +114,19 @@ tracks/1/keys = {
 position = Vector2( 818.716, 75.791 )
 
 [node name="Node2D" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 606.753, 116.011 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="monstru fundal 1" type="Sprite" parent="Node2D"]
-position = Vector2( 2144.13, -4827.11 )
+position = Vector2( 2137.63, -4829.06 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="monstru negru" type="Sprite" parent="Node2D"]
 position = Vector2( 2140.34, -4822.45 )
@@ -63,9 +134,72 @@ rotation = 4.71239
 scale = Vector2( 1.5, 1.5 )
 z_index = 4
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Character" parent="." instance=ExtResource( 3 )]
-position = Vector2( 202.274, -296.836 )
+[node name="PowerUpTepos" type="Node2D" parent="."]
+position = Vector2( -4.94, 0 )
+script = ExtResource( 3 )
+
+[node name="powerup tepos" type="Sprite" parent="PowerUpTepos"]
+position = Vector2( 0, 59.631 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="PowerUpTepos/powerup tepos"]
+position = Vector2( 0, -78.652 )
+scale = Vector2( 6.66667, 6.66667 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PowerUpTepos/powerup tepos/Area2D"]
+shape = SubResource( 6 )
+
+[node name="Light2D" type="Light2D" parent="PowerUpTepos"]
+position = Vector2( 3.258, 52.9429 )
+texture = ExtResource( 5 )
+texture_scale = 0.7
+energy = 0.754806
+shadow_enabled = true
+shadow_gradient_length = 4.0
+shadow_filter = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PowerUpTepos"]
+autoplay = "powerup"
+anims/powerup = SubResource( 5 )
+
+[node name="PowerUpInnot" type="Node2D" parent="."]
+position = Vector2( -4.94, 0 )
+script = ExtResource( 3 )
+
+[node name="powerup tepos" type="Sprite" parent="PowerUpInnot"]
+position = Vector2( 0, 59.631 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="PowerUpInnot/powerup tepos"]
+position = Vector2( 0, -78.652 )
+scale = Vector2( 6.66667, 6.66667 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PowerUpInnot/powerup tepos/Area2D"]
+shape = SubResource( 6 )
+
+[node name="Light2D" type="Light2D" parent="PowerUpInnot"]
+position = Vector2( 3.258, 52.9429 )
+texture = ExtResource( 5 )
+texture_scale = 0.7
+energy = 0.754806
+shadow_enabled = true
+shadow_gradient_length = 4.0
+shadow_filter = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PowerUpInnot"]
+autoplay = "powerup"
+anims/powerup = SubResource( 7 )
+
+[node name="Character" parent="." instance=ExtResource( 6 )]
+position = Vector2( 160.743, 19.2896 )
+has_tepi = true
+has_swimp = true
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 offset = Vector2( 0, -746.46 )
@@ -85,43 +219,36 @@ editor_draw_drag_margin = true
 material = SubResource( 4 )
 position = Vector2( 4882.82, 577.813 )
 scale = Vector2( 56.3086, 11.5742 )
-texture = ExtResource( 5 )
-script = ExtResource( 6 )
+z_index = 3
+texture = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="WaterArea" type="Area2D" parent="WaterContainer"]
 position = Vector2( 2905.77, 17.16 )
-script = ExtResource( 7 )
+script = ExtResource( 10 )
 
 [node name="WaterCollisionPolygon" type="CollisionPolygon2D" parent="WaterContainer/WaterArea"]
 position = Vector2( -2903.64, 3.45288 )
 polygon = PoolVector2Array( 3116.14, 185.866, 6643.29, 181.872, 6627.31, 912.865, 3116.14, 904.876 )
 
-[node name="Platform2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 362.43, -197.082 )
-
-[node name="Platform3" parent="." instance=ExtResource( 8 )]
-position = Vector2( 2199.41, -998.36 )
-
-[node name="Platform4" parent="." instance=ExtResource( 8 )]
-position = Vector2( -79.0399, -593.414 )
-
-[node name="Area2D" parent="." instance=ExtResource( 9 )]
-position = Vector2( 994.274, 670.26 )
+[node name="Area2D" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1823.07, 543.543 )
 spawn_point_path = NodePath("../StartingPositions/Level2")
 limits = Vector2( 6000, 1500 )
 
-[node name="Area2D2" parent="." instance=ExtResource( 9 )]
+[node name="Area2D2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 2885.83, -636.256 )
 spawn_point_path = NodePath("../StartingPositions/Level1")
 limits = Vector2( 3000, 365 )
 
 [node name="StartingPositions" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Level2" type="Position2D" parent="StartingPositions"]
 position = Vector2( 3320.28, -577.917 )
 
 [node name="Level1" type="Position2D" parent="StartingPositions"]
-position = Vector2( 1030.99, -182.144 )
+position = Vector2( 1077.86, 243.251 )
 
 [node name="Walls" type="Node" parent="."]
 editor/display_folded = true
@@ -132,14 +259,14 @@ physics_material_override = SubResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D"]
 position = Vector2( -326.818, 18.286 )
-polygon = PoolVector2Array( 208.578, -1629.67, 89.744, -1510.79, -17.0156, -1315.8, -35.7034, -846.546, 27.6296, -434.311, 26.8245, -65.3728, 2.30353, 189.645, -44.8648, 418.964, 25.1121, 570.184, 110.708, 688.508, 286.935, 789.21, 594.431, 867.262, 596.592, 1038.45, -261.886, 1010.75, -173.95, -1757.18 )
+polygon = PoolVector2Array( 208.578, -1629.67, 89.744, -1510.79, -17.0156, -1315.8, -35.7034, -846.546, 57.698, -229.577, 26.8245, -65.3728, 2.30353, 189.645, 12.8936, 411.321, 46.0099, 565.215, 129.775, 672.356, 286.935, 789.21, 594.431, 867.262, 596.592, 1038.45, -261.886, 1010.75, -173.95, -1757.18 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
 position = Vector2( 818.716, 75.791 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D2"]
 position = Vector2( 5.84399, 3.89612 )
-polygon = PoolVector2Array( 256.44, 879.313, 979.231, 830.174, 1500.9, 830.174, 1847.76, 664.979, 2046.4, 408.121, 2132.02, 65.6422, 2132.02, -160.394, 2068.19, -933.437, 2212.59, -903.987, 2297.62, -217.824, 2308.43, 74.1836, 2262.67, 404.171, 2330.06, 499.578, 2575.2, 625.754, 2591.43, 1028.72, 259.439, 1045.31 )
+polygon = PoolVector2Array( 256.44, 879.313, 932.807, 807.523, 1507.47, 817.263, 1847.76, 664.979, 2019.8, 400.387, 2107.46, 53.6397, 2123.05, -129.474, 2068.19, -933.437, 2220.53, -848.807, 2297.62, -217.824, 2308.43, 74.1836, 2262.67, 404.171, 2330.06, 499.578, 2575.2, 625.754, 2591.43, 1028.72, 259.439, 1045.31 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Walls"]
 position = Vector2( 818.716, 75.791 )
@@ -150,7 +277,7 @@ polygon = PoolVector2Array( 2580.97, 627.696, 2831.49, 679.753, 3983.25, 679.753
 [node name="StaticBody2D4" type="StaticBody2D" parent="Walls"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D4"]
-polygon = PoolVector2Array( 801.163, -3639.13, 341.717, -3716.56, 310.743, -1661.96, 697.916, -1532.9, 930.221, -1656.8, 1516.75, -1621.02, 1936.87, -1589.69, 2447.94, -1630.99, 2736.83, -1490.88, 2902.22, -1021.83, 2886.74, -851.477, 3046.77, -820.503, 3284.24, -1099.27, 4105.04, -1248.98, 4987.8, -1646.47, 5726.01, -1775.53, 6211.27, -1754.88, 6221.59, -1914.91, 5359.49, -1852.97, 4977.47, -1992.35, 4848.42, -2369.2, 4874.23, -3024.81, 4745.17, -4320.55, 4610.95, -5223.96, 4327.02, -5162.01, 4538.68, -4857.43, 4626.44, -4320.55, 4549.74, -3946.23, 4368.32, -3892.08, 4389.8, -3642.75, 4585.14, -3556.53, 4734.85, -3246.79, 4698.71, -2441.47, 4574.81, -1821.99, 4404.46, -1553.55, 3883.06, -1269.63, 3232.61, -1228.33, 2866.09, -1460.63, 2701.04, -1656.81, 2417.98, -1773.94, 1929.28, -1793.68, 1116.06, -1827.16, 749.54, -2028.49, 491.424, -2549.88, 439.801, -3241.63, 646.293, -3365.52, 940.545, -3381.01 )
+polygon = PoolVector2Array( 801.163, -3639.13, 341.717, -3716.56, 310.743, -1661.96, 697.916, -1532.9, 930.221, -1656.8, 1516.75, -1621.02, 1936.87, -1589.69, 2447.94, -1630.99, 2736.83, -1490.88, 2902.22, -1021.83, 2886.74, -851.477, 3050.97, -774.993, 3284.24, -1099.27, 4105.04, -1248.98, 4987.8, -1646.47, 5726.01, -1775.53, 6211.27, -1754.88, 6221.59, -1914.91, 5359.49, -1852.97, 4977.47, -1992.35, 4848.42, -2369.2, 4874.23, -3024.81, 4745.17, -4320.55, 4610.95, -5223.96, 4327.02, -5162.01, 4538.68, -4857.43, 4626.44, -4320.55, 4549.74, -3946.23, 4368.32, -3892.08, 4389.8, -3642.75, 4585.14, -3556.53, 4734.85, -3246.79, 4698.71, -2441.47, 4574.81, -1821.99, 4404.46, -1553.55, 3883.06, -1269.63, 3232.61, -1228.33, 2854.99, -1474.98, 2701.04, -1656.81, 2417.98, -1773.94, 1929.28, -1793.68, 1120.85, -1845.88, 749.54, -2028.49, 491.424, -2549.88, 439.801, -3241.63, 646.293, -3365.52, 940.545, -3381.01 )
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="Walls"]
 
@@ -162,9 +289,20 @@ polygon = PoolVector2Array( 804.186, -3622.68, 1012.9, -3577.14, 2936.85, -3744.
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D6"]
 polygon = PoolVector2Array( 993.925, -4882.54, 751.06, -4704.19, 530.963, -4313.33, 493.015, -3899.7, 678.959, -3660.63, 337.429, -3721.34, 333.634, -4696.6, 1468.27, -5861.6, 4348.51, -5929.9, 5475.56, -6115.85, 5574.22, -5979.23, 4314.35, -5151.97, 3984.21, -5326.53, 3301.15, -5322.74, 1862.93, -5216.48 )
 
-[node name="Button" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1065.12, 201.562 )
+[node name="Button" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1663.76, -1326.71 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Button"]
 anims/zoom1 = SubResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 0.4, 0.4 )
+tile_set = ExtResource( 13 )
+cell_size = Vector2( 128, 128 )
+cell_quadrant_size = 64
+cell_custom_transform = Transform2D( 0, 0, 0, 1, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -1900521, 4, 0, -1900515, 536870914, 0, -1900510, 536870916, 0, -1703921, 536870915, 0, -1376246, 536870915, 0, -1114116, 536870915, 0, -1048529, 536870915, 0, -1048523, 536870915, 0, -1048518, 536870915, 0, -786431, 536870915, 0, -786425, 536870915, 0, -393200, 536870915, 0, -393194, 536870915, 0, -393188, 536870915, 0, 65532, 4, 0, 2, 536870914, 0, 8, 536870913, 0, 393233, 536870915, 0 )
+[connection signal="body_entered" from="PowerUpTepos/powerup tepos/Area2D" to="PowerUpTepos" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="PowerUpInnot/powerup tepos/Area2D" to="PowerUpInnot" method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]

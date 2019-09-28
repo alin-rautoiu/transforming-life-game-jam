@@ -9,6 +9,7 @@ func _ready() -> void:
 func on_button_press(body) -> void:
 	if body.name == "Character" and !is_pressed:
 		$AnimationPlayer.play("Pressed")
+		yield(get_tree().create_timer(0.42), "timeout")
 		$AnimationPlayer2.play("zoom1")
 		is_pressed = true
 		body.remove_camera_limits()

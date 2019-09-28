@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/virus jump 7.png-66556a6c096b55ac51055a38501fa2df.stex"
+path="res://.import/buton 2.png-9e09725708c31314041a55f50642636a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/character/virus jump 7.png"
-dest_files=[ "res://.import/virus jump 7.png-66556a6c096b55ac51055a38501fa2df.stex" ]
+source_file="res://sprites/button/buton 2.png"
+dest_files=[ "res://.import/buton 2.png-9e09725708c31314041a55f50642636a.stex" ]
 
 [params]
 

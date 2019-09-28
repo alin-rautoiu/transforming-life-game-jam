@@ -9,6 +9,12 @@ export var JUMP_ACCELERATION: float = 800
 export var FALL_MULTIPLIER: float = 5.5
 export var LOW_JUMP_MULTIPLIER: float = 2.0
 
+export var has_tepi = false
+var is_tepos = false
+
+export var has_swimp = false
+var is_swim = false
+
 var velocity = Vector2()
 var last_velocity = Vector2()
 var was_on_floor = true
@@ -29,18 +35,28 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_left") and !block_inputs:
 		velocity.x = clamp(velocity.x - ACCELERATION, -MAX_WALK_SPEED, 0)
 		$CharacterSprite.flip_h = true;
+		$"CharacterSprite/virus tep fara picioare".flip_h = true
 		if is_on_floor():
-			$CharacterSprite.play("walk")
+			if is_swim:
+				$CharacterSprite.play("wobble_walk")	
+			else:
+				$CharacterSprite.play("walk")
 	elif Input.is_action_pressed("ui_right") and !block_inputs:
 		velocity.x = clamp(velocity.x + ACCELERATION, 0, MAX_WALK_SPEED)
 		$CharacterSprite.flip_h = false;
+		$"CharacterSprite/virus tep fara picioare".flip_h = false
 		if is_on_floor():
-			$CharacterSprite.play("walk")
+			if is_swim:
+				$CharacterSprite.play("wobble_walk")	
+			else:
+				$CharacterSprite.play("walk")
 	else:
 		friction = true
 		if velocity.y - last_velocity.y <= 0.0001 and is_not_landing():
-			$CharacterSprite.play("idle")
-
+			if is_swim:
+				$CharacterSprite.play("wobble_idle")	
+			else:
+				$CharacterSprite.play("idle")
 	
 	if is_on_floor():
 		if !was_on_floor:
@@ -75,6 +91,14 @@ func _physics_process(delta):
 		else:
 		 rotation = lerp(rotation, 0, 0.5)
 	velocity = move_and_slide(velocity, UP)
+	
+	if Input.is_action_just_pressed("ui_spikes"):
+		is_tepos = !is_tepos
+		$"CharacterSprite/virus tep fara picioare".visible = !$"CharacterSprite/virus tep fara picioare".visible 
+		
+	if Input.is_action_just_pressed("ui_swimp"):
+		is_swim = !is_swim
+		
 
 func move_to(spawn_position, limits):
 	global_position = spawn_position
@@ -101,12 +125,20 @@ func shift_camera_limits(left, right):
 	print(block_inputs)
 	block_inputs = false
 
-func dissolve():
-	print("dissolve")
-	$AnimationPlayer.play("Dissolve")
-	yield(get_tree().create_timer(0.5), "timeout")
-	global_position = last_spawn_point
-	$AnimationPlayer.play_backwards("Dissolve")
+func collect_spikes():
+	has_tepi = true
+	
+func collect_swim():
+	has_swimp = true
+
+func enter_water():
+	if !is_swim:
+		$AnimationPlayer.play("Dissolve")
+		yield(get_tree().create_timer(0.5), "timeout")
+		global_position = last_spawn_point
+		$AnimationPlayer.play_backwards("Dissolve")
+	else:
+		return
 
 func is_not_landing():
 	print()
