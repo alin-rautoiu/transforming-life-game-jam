@@ -1,56 +1,84 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Character.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Platform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://monstru fundal.png" type="Texture" id=1]
+[ext_resource path="res://Character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Platform.tscn" type="PackedScene" id=3]
+[ext_resource path="res://NextLevel.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Node2D"]
 
-[node name="Character" parent="." instance=ExtResource( 1 )]
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 606.753, 116.011 )
+
+[node name="monstru fundal" type="Sprite" parent="Node2D"]
+position = Vector2( 1244.82, -2954.94 )
+texture = ExtResource( 1 )
+
+[node name="Character" parent="." instance=ExtResource( 2 )]
 position = Vector2( 606.753, 116.011 )
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 current = true
-zoom = Vector2( 2.54, 2.49 )
-smoothing_enabled = true
-smoothing_speed = 2.0
-offset_v = -1.0
-drag_margin_top = 0.09
-drag_margin_bottom = 0.22
+zoom = Vector2( 2, 2 )
+limit_left = 0
+limit_right = 1500
+limit_bottom = 999999999
+limit_smoothed = true
+editor_draw_screen = false
 editor_draw_limits = true
-editor_draw_drag_margin = true
 
-[node name="Platform" parent="." instance=ExtResource( 2 )]
+[node name="Platform" parent="." instance=ExtResource( 3 )]
 position = Vector2( -47.934, 0 )
 
-[node name="Platform2" parent="." instance=ExtResource( 2 )]
+[node name="Platform2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 362.43, -197.082 )
 
-[node name="Platform3" parent="." instance=ExtResource( 2 )]
+[node name="Platform3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 729.87, -394.163 )
 
-[node name="Platform4" parent="." instance=ExtResource( 2 )]
+[node name="Platform4" parent="." instance=ExtResource( 3 )]
 position = Vector2( -73.488, -639.68 )
 
 [node name="Platforme Jos" type="Position2D" parent="."]
+editor/display_folded = true
 position = Vector2( -202.713, -61.7432 )
 
-[node name="Platform5" parent="Platforme Jos" instance=ExtResource( 2 )]
+[node name="Platform5" parent="Platforme Jos" instance=ExtResource( 3 )]
 position = Vector2( -762.379, 463.013 )
 
-[node name="Platform6" parent="Platforme Jos" instance=ExtResource( 2 )]
+[node name="Platform6" parent="Platforme Jos" instance=ExtResource( 3 )]
 position = Vector2( -237.694, 467.439 )
 
-[node name="Platform7" parent="Platforme Jos" instance=ExtResource( 2 )]
+[node name="Platform7" parent="Platforme Jos" instance=ExtResource( 3 )]
 position = Vector2( 280.728, 463.013 )
 
-[node name="Platform8" parent="Platforme Jos" instance=ExtResource( 2 )]
+[node name="Platform8" parent="Platforme Jos" instance=ExtResource( 3 )]
 position = Vector2( 876.119, 463.013 )
 
-[node name="Platform9" parent="Platforme Jos" instance=ExtResource( 2 )]
+[node name="Platform9" parent="Platforme Jos" instance=ExtResource( 3 )]
 position = Vector2( 1422.18, 463.013 )
 
-[node name="Platform10" parent="Platforme Jos" instance=ExtResource( 2 )]
+[node name="Platform10" parent="Platforme Jos" instance=ExtResource( 3 )]
 position = Vector2( 2006.67, 450.166 )
 
-[node name="Platform11" parent="Platforme Jos" instance=ExtResource( 2 )]
+[node name="Platform11" parent="Platforme Jos" instance=ExtResource( 3 )]
 position = Vector2( -1356.15, 463.444 )
+
+[node name="Area2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1275.63, -19.1685 )
+spawn_point_path = NodePath("../StartingPositions/Level2")
+limits = Vector2( 4000, 1500 )
+
+[node name="Area2D2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2503.18, 745.338 )
+spawn_point_path = NodePath("../StartingPositions/Level1")
+limits = Vector2( 1500, 0 )
+
+[node name="StartingPositions" type="Node" parent="."]
+
+[node name="Level2" type="Position2D" parent="StartingPositions"]
+position = Vector2( 1912.62, 497.604 )
+
+[node name="Level1" type="Position2D" parent="StartingPositions"]
+position = Vector2( 245.749, -305.356 )
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
