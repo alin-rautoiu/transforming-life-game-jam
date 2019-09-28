@@ -60,8 +60,8 @@ func _physics_process(delta):
 	
 	if is_on_floor():
 		if !was_on_floor:
-			$CharacterSprite.play("land")
-			print("land")
+			if !is_swim:
+				$CharacterSprite.play("land")
 			was_on_floor = true
 		if friction:
 			velocity.x = lerp(velocity.x, 0, 0.2)
@@ -69,7 +69,8 @@ func _physics_process(delta):
 			was_on_floor = false;
 			if !$JumpAudio.playing:
 				$JumpAudio.play()
-				$CharacterSprite.play("jump")
+				if !is_swim:
+				 $CharacterSprite.play("jump")
 			velocity.y -= JUMP_ACCELERATION
 	else:
 		if friction:
@@ -92,12 +93,17 @@ func _physics_process(delta):
 		 rotation = lerp(rotation, 0, 0.5)
 	velocity = move_and_slide(velocity, UP)
 	
-	if Input.is_action_just_pressed("ui_spikes"):
+	if has_tepi and Input.is_action_just_pressed("ui_spikes"):
 		is_tepos = !is_tepos
+		is_swim = false
+		$CharacterSprite.play("idle")
 		$"CharacterSprite/virus tep fara picioare".visible = !$"CharacterSprite/virus tep fara picioare".visible 
 		
-	if Input.is_action_just_pressed("ui_swimp"):
+	if has_swimp and Input.is_action_just_pressed("ui_swimp"):
 		is_swim = !is_swim
+		$"CharacterSprite/virus tep fara picioare".visible = false
+		$CharacterSprite.play("wobble_idle")	
+		is_tepos = false
 		
 
 func move_to(spawn_position, limits):
@@ -127,9 +133,11 @@ func shift_camera_limits(left, right):
 
 func collect_spikes():
 	has_tepi = true
+	is_tepos = true
 	
 func collect_swim():
 	has_swimp = true
+	is_swim = true
 
 func enter_water():
 	if !is_swim:
@@ -139,6 +147,9 @@ func enter_water():
 		$AnimationPlayer.play_backwards("Dissolve")
 	else:
 		return
+
+func exit_water():
+	return
 
 func is_not_landing():
 	print()

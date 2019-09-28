@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var is_pressed: bool = false
+export var which = 1
 
 func _ready() -> void:	
 	$Area2D2.connect("body_entered", self, "on_button_press")
@@ -13,6 +14,9 @@ func on_button_press(body) -> void:
 		$AnimationPlayer2.play("zoom1")
 		is_pressed = true
 		body.remove_camera_limits()
+		
+	if which == 1:
+		get_node("../manuta/AnimationPlayer").play("Move")
 
 func on_button_release(body) -> void:
 	if body.name == "Character" and is_pressed:

@@ -154,19 +154,22 @@ shader_param/disolve_proc = 5.0
 
 [node name="Character" type="KinematicBody2D"]
 script = ExtResource( 1 )
+has_tepi = true
+has_swimp = true
 
 [node name="CharacterSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
 z_index = 1
 frames = SubResource( 3 )
 animation = "idle"
-frame = 2
+frame = 3
 playing = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterSprite"]
 occluder = SubResource( 7 )
 
 [node name="virus tep fara picioare" type="Sprite" parent="CharacterSprite"]
+visible = false
 position = Vector2( 3.70642, -87.0988 )
 texture = ExtResource( 21 )
 
