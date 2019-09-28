@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://green_triangle.png" type="Texture" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[node name="Triangle" type="Node2D"]
+
+[node name="green_triangle" type="Polygon2D" parent="."]
+material = SubResource( 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+polygon = PoolVector2Array( 9, -45.8, 9, -43.4, 50, 47.6, 50, 50, -50, 50, -50, 28.9, -49.8, 27, -48.3, 27, -22.3, -30, -21.1, -30, -11, -47.5, -11, -50, 5, -50 )
+uv = PoolVector2Array( 59, 4.2, 59, 6.6, 100, 97.6, 100, 100, 0, 100, 0, 78.9, 0.2, 77, 1.7, 77, 27.7, 20, 28.9, 20, 39, 2.5, 39, 0, 55, 0 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ) ]
+
+[node name="Area2D" type="Area2D" parent="green_triangle"]
+scale = Vector2( 2, 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="green_triangle/Area2D"]
+polygon = PoolVector2Array( -3.03885, -25.1632, -24.7703, 18.9101, -25.1365, 25.2586, 24.6748, 24.8923, 0.623749, -25.0411 )

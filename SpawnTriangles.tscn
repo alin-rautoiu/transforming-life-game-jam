@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Node2D.gd" type="Script" id=1]
+[ext_resource path="res://bg.png" type="Texture" id=2]
+[ext_resource path="res://GreenTriangle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://light.png" type="Texture" id=4]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 650.862, 282.334 )
+scale = Vector2( 12.9608, 7.44562 )
+texture = ExtResource( 2 )
+
+[node name="Triangle" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 528.911, 230.401 )
+texture = ExtResource( 4 )
+energy = 0.5
+shadow_enabled = true
+shadow_color = Color( 0.156863, 0.0588235, 0.0588235, 0 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 495.966, 238.73 )
+cast_to = Vector2( -66.08, 60.83 )

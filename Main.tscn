@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Platform.tscn" type="PackedScene" id=2]
+
+[node name="Main" type="Node2D"]
+
+[node name="Character" parent="." instance=ExtResource( 1 )]
+position = Vector2( 606.753, 116.011 )
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+current = true
+zoom = Vector2( 2.54, 2.49 )
+smoothing_enabled = true
+smoothing_speed = 2.0
+offset_v = -1.0
+drag_margin_top = 0.09
+drag_margin_bottom = 0.22
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Platform" parent="." instance=ExtResource( 2 )]
+position = Vector2( -47.934, 0 )
+
+[node name="Platform2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 362.43, -197.082 )
+
+[node name="Platform3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 729.87, -394.163 )
+
+[node name="Platform4" parent="." instance=ExtResource( 2 )]
+position = Vector2( -73.488, -639.68 )
+
+[node name="Platforme Jos" type="Position2D" parent="."]
+position = Vector2( -202.713, -61.7432 )
+
+[node name="Platform5" parent="Platforme Jos" instance=ExtResource( 2 )]
+position = Vector2( -762.379, 463.013 )
+
+[node name="Platform6" parent="Platforme Jos" instance=ExtResource( 2 )]
+position = Vector2( -237.694, 467.439 )
+
+[node name="Platform7" parent="Platforme Jos" instance=ExtResource( 2 )]
+position = Vector2( 280.728, 463.013 )
+
+[node name="Platform8" parent="Platforme Jos" instance=ExtResource( 2 )]
+position = Vector2( 876.119, 463.013 )
+
+[node name="Platform9" parent="Platforme Jos" instance=ExtResource( 2 )]
+position = Vector2( 1422.18, 463.013 )
+
+[node name="Platform10" parent="Platforme Jos" instance=ExtResource( 2 )]
+position = Vector2( 2006.67, 450.166 )
+
+[node name="Platform11" parent="Platforme Jos" instance=ExtResource( 2 )]
+position = Vector2( -1356.15, 463.444 )
