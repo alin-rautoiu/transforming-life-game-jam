@@ -72,8 +72,8 @@ editor_draw_drag_margin = true
 
 [node name="Water" type="Sprite" parent="."]
 material = SubResource( 4 )
-position = Vector2( 1046.33, 667.269 )
-scale = Vector2( 37.7553, 18.0407 )
+position = Vector2( 3990.63, 460.341 )
+scale = Vector2( 53.9369, 11.5742 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
 

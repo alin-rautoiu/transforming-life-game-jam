@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Character.gd" type="Script" id=1]
 [ext_resource path="res://sprites/character/virus idle 1.png" type="Texture" id=2]
@@ -18,6 +18,8 @@
 [ext_resource path="res://sprites/character/virus mers 3.png" type="Texture" id=16]
 [ext_resource path="res://sprites/character/virus mers 4.png" type="Texture" id=17]
 [ext_resource path="res://sounds/sfx_jump.wav" type="AudioStream" id=18]
+[ext_resource path="res://dissolve.shader" type="Shader" id=19]
+[ext_resource path="res://icon.png" type="Texture" id=20]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -50,6 +52,52 @@ height = 13.0576
 radius = 22.2425
 height = 95.0048
 
+[sub_resource type="Animation" id=6]
+resource_name = "Dissolve"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Dissolve:material:shader_param/disolve_proc")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Dissolve:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( -0.1, 0.1, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CharacterSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 19 )
+shader_param/green_tint = null
+shader_param/sprite_scale = Vector2( 30, 30 )
+shader_param/disolve_proc = 1.0
+
 [node name="Character" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -71,3 +119,13 @@ shape = SubResource( 2 )
 
 [node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 18 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Dissolve = SubResource( 6 )
+
+[node name="Dissolve" type="Sprite" parent="."]
+visible = false
+material = SubResource( 5 )
+position = Vector2( -1.16552, 11.3965 )
+scale = Vector2( 3.081, 3.152 )
+texture = ExtResource( 20 )
