@@ -23,7 +23,7 @@ func on_button_press(body) -> void:
 	if which == 2:
 		get_node("../platforme tepi/AnimationPlayer").play("GetSpikes")
 	if which == 3:
-		return
+		get_node("../Node2D/fundal monstru 3/AnimationPlayer").play("Hapciu")
 
 func on_button_release(body) -> void:
 	if body.name == "Character" and is_pressed:
