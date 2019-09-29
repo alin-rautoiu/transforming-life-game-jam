@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Enemy.gd" type="Script" id=1]
+[ext_resource path="res://sprites/enemy/leuco1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/enemy/leuco2.png" type="Texture" id=3]
+[ext_resource path="res://sprites/enemy/leuco3.png" type="Texture" id=4]
+[ext_resource path="res://sprites/enemy/leuco4.png" type="Texture" id=5]
+[ext_resource path="res://sprites/enemy/leuco5.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 176.146
+
+[node name="Node2D2" type="Node2D"]
+position = Vector2( 520.516, -3064.78 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 6 )
+frame = 3
+playing = true
+
+[node name="Area2D" type="Area2D" parent="."]
+editor/display_folded = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 7 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

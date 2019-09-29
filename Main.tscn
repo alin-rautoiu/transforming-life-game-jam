@@ -1,28 +1,88 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=32 format=2]
 
-[ext_resource path="res://monstru fundal 1.png" type="Texture" id=1]
-[ext_resource path="res://monstru negru.png" type="Texture" id=2]
-[ext_resource path="res://Character.tscn" type="PackedScene" id=3]
-[ext_resource path="res://water.shader" type="Shader" id=4]
-[ext_resource path="res://icon.png" type="Texture" id=5]
-[ext_resource path="res://Water.gd" type="Script" id=6]
-[ext_resource path="res://WaterArea.gd" type="Script" id=7]
-[ext_resource path="res://NextLevel.tscn" type="PackedScene" id=8]
-[ext_resource path="res://sprites/sfincteru tatanetu (1).png" type="Texture" id=9]
-[ext_resource path="res://sprites/manuta.png" type="Texture" id=10]
-[ext_resource path="res://sounds/rumble.wav" type="AudioStream" id=11]
-[ext_resource path="res://Button.tscn" type="PackedScene" id=12]
-[ext_resource path="res://PowerUpInnot.tscn" type="PackedScene" id=13]
-[ext_resource path="res://platforms_2.tres" type="TileSet" id=14]
+[ext_resource path="res://sprites/character/virus idle 1.png" type="Texture" id=1]
+[ext_resource path="res://fundal monstru 3.png" type="Texture" id=2]
+[ext_resource path="res://monstru fundal 1.png" type="Texture" id=3]
+[ext_resource path="res://fundal monstru 2.png" type="Texture" id=4]
+[ext_resource path="res://monstru negru.png" type="Texture" id=5]
+[ext_resource path="res://sprites/hapciu.png" type="Texture" id=6]
+[ext_resource path="res://Character.tscn" type="PackedScene" id=7]
+[ext_resource path="res://water.shader" type="Shader" id=8]
+[ext_resource path="res://icon.png" type="Texture" id=9]
+[ext_resource path="res://Water.gd" type="Script" id=10]
+[ext_resource path="res://WaterArea.gd" type="Script" id=11]
+[ext_resource path="res://NextLevel.tscn" type="PackedScene" id=12]
+[ext_resource path="res://sprites/sfincteru tatanetu (1).png" type="Texture" id=13]
+[ext_resource path="res://sprites/manuta.png" type="Texture" id=14]
+[ext_resource path="res://sounds/rumble.wav" type="AudioStream" id=15]
+[ext_resource path="res://Button.tscn" type="PackedScene" id=16]
+[ext_resource path="res://platforms_2.tres" type="TileSet" id=17]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=18]
+[ext_resource path="res://platforme tepi.png" type="Texture" id=19]
+[ext_resource path="res://PowerUpInnot.tscn" type="PackedScene" id=20]
+[ext_resource path="res://PowerUpTepos.tscn" type="PackedScene" id=21]
+[ext_resource path="res://PowerUpTepos.gd" type="Script" id=22]
 
-[sub_resource type="ShaderMaterial" id=4]
-shader = ExtResource( 4 )
+[sub_resource type="Animation" id=1]
+resource_name = "Hapciu"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.5, 5.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../virus idle 1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 7, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2276.8, -6452.17 ), Vector2( 8000, -6524.47 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../virus idle 1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 6.4, 6.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../hapciu:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 5.6, 6.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 8 )
 shader_param/green_tint = Color( 0.121569, 1, 0, 1 )
 shader_param/sprite_scale = Vector2( 36.69, 12.204 )
 
-[sub_resource type="PhysicsMaterial" id=1]
+[sub_resource type="PhysicsMaterial" id=3]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "Move"
 length = 3.0
 tracks/0/type = "value"
@@ -35,7 +95,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1.5, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 7000, -3129.52 ), Vector2( 4500, -3129.52 ), Vector2( 3797.31, -3129.52 ) ]
+"values": [ Vector2( 7000, -3129.52 ), Vector2( 5000, -3129.52 ), Vector2( 2974.1, -3129.52 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
@@ -50,7 +110,34 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Character/Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.9, 4.5, 5 ),
+"transitions": PoolRealArray( 1, 1, -0.5, -0.5, -2 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 2, 2 ), Vector2( 9, 9 ), Vector2( 9, 9 ), Vector2( 2, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Character/Camera2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.9, 4.5, 5 ),
+"transitions": PoolRealArray( 1, -0.5, -0.5, -2 ),
+"update": 0,
+"values": [ Vector2( 0, -746.46 ), Vector2( 2000, -3600 ), Vector2( 2000, -3600 ), Vector2( 0, -746.46 ) ]
+}
+
+[sub_resource type="Animation" id=6]
 resource_name = "zoom1"
 length = 5.0
 tracks/0/type = "value"
@@ -78,20 +165,202 @@ tracks/1/keys = {
 "values": [ Vector2( 0, -746.46 ), Vector2( 2000, -3600 ), Vector2( 2000, -3600 ), Vector2( 0, -746.46 ) ]
 }
 
+[sub_resource type="Animation" id=7]
+resource_name = "zoom1"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Character/Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.9, 4.5, 5 ),
+"transitions": PoolRealArray( 1, 1, -0.5, -0.5, -2 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 2, 2 ), Vector2( 9, 9 ), Vector2( 9, 9 ), Vector2( 2, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Character/Camera2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.9, 4.5, 5 ),
+"transitions": PoolRealArray( 1, -0.5, -0.5, -2 ),
+"update": 0,
+"values": [ Vector2( 0, -746.46 ), Vector2( 2000, -3600 ), Vector2( 2000, -3600 ), Vector2( 0, -746.46 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 520.516, -3064.78 ), Vector2( 1151.2, -3064.78 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.9, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("StaticBody2D/CollisionPolygon2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("StaticBody2D3/CollisionPolygon2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("StaticBody2D2/CollisionPolygon2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("StaticBody2D4/CollisionPolygon2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("StaticBody2D5/CollisionPolygon2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("StaticBody2D6/CollisionPolygon2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../Node2D/fundal monstru 2:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Main" type="Node2D"]
 position = Vector2( 818.716, 75.791 )
 
+[node name="virus idle 1" type="Sprite" parent="."]
+visible = false
+position = Vector2( 2276.8, -6452.17 )
+z_index = 9
+texture = ExtResource( 1 )
+
 [node name="Node2D" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 606.753, 116.011 )
 __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="fundal monstru 3" type="Sprite" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0.0227273 )
+position = Vector2( 2140.34, -4822.45 )
+scale = Vector2( 1.5, 1.5 )
+z_index = 5
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/fundal monstru 3"]
+anims/Hapciu = SubResource( 1 )
+
 [node name="monstru fundal 1" type="Sprite" parent="Node2D"]
 position = Vector2( 2137.63, -4829.06 )
 scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="fundal monstru 2" type="Sprite" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 2140.34, -4822.45 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -101,14 +370,21 @@ position = Vector2( 2140.34, -4822.45 )
 rotation = 4.71239
 scale = Vector2( 1.5, 1.5 )
 z_index = 4
-texture = ExtResource( 2 )
+texture = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Character" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
+[node name="hapciu" type="Sprite" parent="Node2D"]
+visible = false
+position = Vector2( -226.386, -7687.76 )
+z_index = 10
+texture = ExtResource( 6 )
+
+[node name="Character" parent="." instance=ExtResource( 7 )]
 position = Vector2( 160.743, 19.2896 )
+has_tepi = false
+has_swimp = false
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 offset = Vector2( 0, -746.46 )
@@ -126,22 +402,22 @@ editor_draw_drag_margin = true
 editor/display_folded = true
 
 [node name="Water" type="Sprite" parent="WaterContainer"]
-material = SubResource( 4 )
+material = SubResource( 2 )
 position = Vector2( 4882.82, 577.813 )
 scale = Vector2( 56.3086, 11.5742 )
 z_index = 3
-texture = ExtResource( 5 )
-script = ExtResource( 6 )
+texture = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="WaterArea" type="Area2D" parent="WaterContainer"]
 position = Vector2( 2905.77, 17.16 )
-script = ExtResource( 7 )
+script = ExtResource( 11 )
 
 [node name="WaterCollisionPolygon" type="CollisionPolygon2D" parent="WaterContainer/WaterArea"]
 position = Vector2( -2903.64, 3.45288 )
 polygon = PoolVector2Array( 3116.14, 185.866, 6643.29, 181.872, 6627.31, 912.865, 3116.14, 904.876 )
 
-[node name="Area2D" parent="." instance=ExtResource( 8 )]
+[node name="Area2D" parent="." instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( 1823.07, 543.543 )
 spawn_point_path = NodePath("../StartingPositions/Level2")
@@ -152,9 +428,9 @@ position = Vector2( -64.01, -16.103 )
 rotation = -0.349066
 scale = Vector2( 0.44, 0.37 )
 z_index = 3
-texture = ExtResource( 9 )
+texture = ExtResource( 13 )
 
-[node name="Area2D2" parent="." instance=ExtResource( 8 )]
+[node name="Area2D2" parent="." instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( 2376.42, -913.506 )
 spawn_point_path = NodePath("../StartingPositions/Level1")
@@ -165,9 +441,9 @@ position = Vector2( 0.267578, -10.9229 )
 rotation = 2.16944
 scale = Vector2( 0.44, 0.37 )
 z_index = 3
-texture = ExtResource( 9 )
+texture = ExtResource( 13 )
 
-[node name="Area2D3" parent="." instance=ExtResource( 8 )]
+[node name="Area2D3" parent="." instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( 5760.11, -1043.65 )
 rotation = -3.18348
@@ -179,16 +455,64 @@ position = Vector2( 0.267578, -10.9229 )
 rotation = 2.16944
 scale = Vector2( 0.44, 0.37 )
 z_index = 3
-texture = ExtResource( 9 )
+texture = ExtResource( 13 )
+
+[node name="Area2D4" parent="." instance=ExtResource( 12 )]
+editor/display_folded = true
+position = Vector2( 27.2251, -2260.87 )
+rotation = -3.18348
+spawn_point_path = NodePath("../StartingPositions/Level2")
+limits = Vector2( 7000, 1500 )
+
+[node name="sfincteru tatanetu (1)2" type="Sprite" parent="Area2D4"]
+position = Vector2( 0.267578, -10.9229 )
+rotation = -1.91114
+scale = Vector2( 0.44, 0.37 )
+z_index = 3
+texture = ExtResource( 13 )
+
+[node name="Area2D5" parent="." instance=ExtResource( 12 )]
+editor/display_folded = true
+position = Vector2( 3310.11, -1590.9 )
+rotation = -3.18348
+spawn_point_path = NodePath("../StartingPositions/Level4")
+limits = Vector2( 7000, 5000 )
+
+[node name="sfincteru tatanetu (1)2" type="Sprite" parent="Area2D5"]
+position = Vector2( 0.267578, -10.9229 )
+rotation = -3.34231
+scale = Vector2( 0.44, 0.37 )
+z_index = 3
+texture = ExtResource( 13 )
+
+[node name="Area2D6" parent="." instance=ExtResource( 12 )]
+editor/display_folded = true
+position = Vector2( 4297.81, -2159.29 )
+rotation = -1.67552
+spawn_point_path = NodePath("../StartingPositions/Level5")
+limits = Vector2( 5000, 365 )
+
+[node name="sfincteru tatanetu (1)2" type="Sprite" parent="Area2D6"]
+position = Vector2( 0.267578, -10.9229 )
+rotation = -3.34231
+scale = Vector2( 0.44, 0.37 )
+z_index = 3
+texture = ExtResource( 13 )
 
 [node name="StartingPositions" type="Node" parent="."]
 editor/display_folded = true
 
-[node name="Level3" type="Position2D" parent="StartingPositions"]
-position = Vector2( 1132.48, -2095.56 )
-
 [node name="Level2" type="Position2D" parent="StartingPositions"]
 position = Vector2( 3433.16, -618.813 )
+
+[node name="Level3" type="Position2D" parent="StartingPositions"]
+position = Vector2( 1197.69, -2084.69 )
+
+[node name="Level5" type="Position2D" parent="StartingPositions"]
+position = Vector2( 3802.06, -1376.53 )
+
+[node name="Level4" type="Position2D" parent="StartingPositions"]
+position = Vector2( 5573.5, -2010.33 )
 
 [node name="Level1" type="Position2D" parent="StartingPositions"]
 position = Vector2( 2339.98, 741.067 )
@@ -198,7 +522,7 @@ editor/display_folded = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
 position = Vector2( 818.716, 75.791 )
-physics_material_override = SubResource( 1 )
+physics_material_override = SubResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/StaticBody2D"]
 position = Vector2( -326.818, 18.286 )
@@ -233,12 +557,14 @@ polygon = PoolVector2Array( 804.186, -3622.68, 1012.9, -3577.14, 2936.85, -3744.
 polygon = PoolVector2Array( 993.925, -4882.54, 751.06, -4704.19, 530.963, -4313.33, 493.015, -3899.7, 678.959, -3660.63, 337.429, -3721.34, 333.634, -4696.6, 1468.27, -5861.6, 4348.51, -5929.9, 5475.56, -6115.85, 5574.22, -5979.23, 4314.35, -5151.97, 3984.21, -5326.53, 3301.15, -5322.74, 1862.93, -5216.48 )
 
 [node name="manuta" type="Sprite" parent="."]
-editor/display_folded = true
-position = Vector2( 3797.31, -3129.52 )
-rotation = 0.164061
-scale = Vector2( 1.17, 0.97 )
+position = Vector2( 7000, -3129.52 )
+rotation = -0.0580389
+scale = Vector2( 1.50384, 1.15369 )
 z_index = 4
-texture = ExtResource( 10 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="StaticBody2D" type="StaticBody2D" parent="manuta"]
 
@@ -247,30 +573,106 @@ polygon = PoolVector2Array( 2160.07, 1880.98, 1036.78, 2459.18, 405.865, 2447.69
 one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="manuta"]
-anims/Move = SubResource( 5 )
+anims/Move = SubResource( 4 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="manuta"]
-stream = ExtResource( 11 )
+stream = ExtResource( 15 )
 volume_db = 6.196
 
-[node name="Button" parent="." instance=ExtResource( 12 )]
-editor/display_folded = true
+[node name="Button" parent="." instance=ExtResource( 16 )]
 position = Vector2( 1663.76, -1326.71 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Button"]
-anims/zoom1 = SubResource( 2 )
+anims/zoom1 = SubResource( 5 )
 
-[node name="PowerUpInnot" parent="." instance=ExtResource( 13 )]
-position = Vector2( 2533.81, -286.305 )
-rotation = 0.164061
-scale = Vector2( 1.17, 0.97 )
+[node name="Button2" parent="." instance=ExtResource( 16 )]
+position = Vector2( 3186.32, 620.749 )
+z_index = 4
+which = 2
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Button2"]
+anims/zoom1 = SubResource( 6 )
+
+[node name="Button3" parent="." instance=ExtResource( 16 )]
+editor/display_folded = true
+position = Vector2( -62.1803, -2899.39 )
+z_index = 4
+which = 3
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Button3"]
+anims/zoom1 = SubResource( 7 )
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 0.4, 0.4 )
-tile_set = ExtResource( 14 )
+tile_set = ExtResource( 17 )
 cell_size = Vector2( 128, 128 )
 cell_quadrant_size = 64
 cell_custom_transform = Transform2D( 0, 0, 0, 1, 0, 0 )
 format = 1
-tile_data = PoolIntArray( -1900521, 4, 0, -1900515, 536870914, 0, -1900510, 536870916, 0, -1703921, 536870915, 0, -1376246, 536870915, 0, -1114116, 536870915, 0, -1048529, 536870915, 0, -1048523, 536870915, 0, -1048518, 536870915, 0, -786431, 536870915, 0, -786425, 536870915, 0, -393200, 536870915, 0, -393194, 536870915, 0, -393188, 536870915, 0, -262093, 536870914, 0, 65532, 4, 0, 2, 536870914, 0, 8, 536870913, 0, 131130, 536870914, 0, 393233, 536870915, 0 )
+tile_data = PoolIntArray( -3866632, 536870912, 0, -3866626, 536870912, 0, -3932156, 536870912, 0, -3932150, 536870912, 0, -3932144, 536870912, 0, -3932138, 536870912, 0, -3932132, 536870912, 0, -3866530, 536870912, 0, -3735517, 536870912, 0, -3407830, 536870912, 0, -3407783, 536870912, 0, -3211163, 536870912, 0, -3145680, 536870912, 0, -2686923, 536870912, 0, -2424789, 536870912, 0, -1900521, 4, 0, -1900515, 536870914, 0, -1900510, 536870916, 0, -1703921, 536870915, 0, -1376246, 536870915, 0, -1114116, 536870915, 0, -1048529, 536870915, 0, -1048523, 536870915, 0, -1048518, 536870915, 0, -786431, 536870915, 0, -786425, 536870915, 0, -393200, 536870915, 0, -393194, 536870915, 0, -393188, 536870915, 0, -262093, 536870914, 0, 65532, 4, 0, 2, 536870914, 0, 8, 536870913, 0, 131130, 536870914, 0, 393233, 536870915, 0 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 18 )]
+editor/display_folded = true
+position = Vector2( 809.029, -3064.78 )
+
+[node name="AnimatedSprite" parent="Node2D2" index="0"]
+frame = 4
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D2"]
+autoplay = "Patrol"
+anims/Patrol = SubResource( 8 )
+
+[node name="platforme tepi" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.0645162 )
+position = Vector2( 2804.52, -4590.86 )
+scale = Vector2( 1.51, 1.07 )
+texture = ExtResource( 19 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platforme tepi"]
+anims/GetSpikes = SubResource( 9 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="platforme tepi"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforme tepi/StaticBody2D"]
+polygon = PoolVector2Array( 871.004, 1774.02, 1292.05, 1230.62, 827.82, 1245.86 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="platforme tepi"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforme tepi/StaticBody2D2"]
+position = Vector2( 726.934, 243.769 )
+polygon = PoolVector2Array( 1234.47, 1641.98, 1292.05, 1230.62, 799.03, 1261.09 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="platforme tepi"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforme tepi/StaticBody2D3"]
+position = Vector2( 701.743, -416.438 )
+polygon = PoolVector2Array( 1299.25, 1509.94, 1292.05, 1230.62, 590.307, 1388.05 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="platforme tepi"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforme tepi/StaticBody2D4"]
+position = Vector2( -104.362, -624.658 )
+polygon = PoolVector2Array( 921.385, 1586.12, 1310.04, 1235.7, 863.807, 1215.39 )
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="platforme tepi"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforme tepi/StaticBody2D5"]
+position = Vector2( -169.138, -1259.47 )
+polygon = PoolVector2Array( 928.583, 1641.98, 1310.04, 1235.7, 863.807, 1266.17 )
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="platforme tepi"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="platforme tepi/StaticBody2D6"]
+position = Vector2( 597.382, -995.39 )
+polygon = PoolVector2Array( 1353.23, 1428.68, 1310.04, 1235.7, 752.248, 1281.41 )
+
+[node name="PowerUpInnot2" parent="." instance=ExtResource( 20 )]
+position = Vector2( 1254.57, -3069.2 )
+
+[node name="PowerUpTepos" parent="." instance=ExtResource( 21 )]
+position = Vector2( 4156.58, -4824.23 )
+script = ExtResource( 22 )
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
+
+[editable path="Node2D2"]

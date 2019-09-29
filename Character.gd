@@ -2,9 +2,9 @@ extends KinematicBody2D
 
 var GRAVITY = 800.0
 export var MAX_WALK_SPEED: float = 400
-export var JUMP_HEIGHT: float = 500
-export var ACCELERATION: float = 20
-export var JUMP_ACCELERATION: float = 800
+export var JUMP_HEIGHT: float = 600
+export var ACCELERATION: float = 30
+export var JUMP_ACCELERATION: float = 1000
 
 export var FALL_MULTIPLIER: float = 5.5
 export var LOW_JUMP_MULTIPLIER: float = 2.0
@@ -134,10 +134,16 @@ func shift_camera_limits(left, right):
 func collect_spikes():
 	has_tepi = true
 	is_tepos = true
+	$"CharacterSprite/virus tep fara picioare".visible = true
 	
 func collect_swim():
 	has_swimp = true
 	is_swim = true
+
+func hit_enemy():
+	if !has_tepi:
+		global_position = last_spawn_point
+		$AnimationPlayer.play_backwards("Dissolve")
 
 func enter_water():
 	if !is_swim:
