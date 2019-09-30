@@ -7,3 +7,17 @@ export_presets.cfg
 # Mono-specific ignores
 .mono/
 data_*/
+
+Tranforming life.wasm
+
+*.import
+
+Tranforming life.png
+
+Tranforming life.pck
+
+Tranforming life.js
+
+Build/
+
+Tranforming life.html

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://sprites/character/virus idle 1.png" type="Texture" id=1]
 [ext_resource path="res://fundal monstru 3.png" type="Texture" id=2]
@@ -46,9 +46,9 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 7, 8 ),
-"transitions": PoolRealArray( 1, 1 ),
+"transitions": PoolRealArray( 2, 1 ),
 "update": 0,
-"values": [ Vector2( 2276.8, -6452.17 ), Vector2( 8000, -6524.47 ) ]
+"values": [ Vector2( 2276.8, -6452.17 ), Vector2( -2000, -6547.27 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("../../virus idle 1:visible")
@@ -73,6 +73,18 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../virus idle 1:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 7, 8 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 1.5, 1.5 ) ]
 }
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -111,7 +123,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-resource_name = "zoom1"
+resource_name = "zoom1_1"
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("../Character/Camera2D:zoom")
@@ -123,7 +135,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.9, 4.5, 5 ),
 "transitions": PoolRealArray( 1, 1, -0.5, -0.5, -2 ),
 "update": 0,
-"values": [ Vector2( 3, 3 ), Vector2( 3, 3 ), Vector2( 11.9, 11.9 ), Vector2( 11.9, 11.9 ), Vector2( 3, 3 ) ]
+"values": [ Vector2( 3, 3 ), Vector2( 3, 3 ), Vector2( 12.01, 12.01 ), Vector2( 12.01, 12.01 ), Vector2( 3, 3 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../Character/Camera2D:offset")
@@ -135,7 +147,35 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.2, 0.9, 4.5, 5 ),
 "transitions": PoolRealArray( 1, -0.5, -0.5, -2 ),
 "update": 0,
-"values": [ Vector2( 0, -550 ), Vector2( 2400, -4832.99 ), Vector2( 2400, -4832.99 ), Vector2( 0, -550 ) ]
+"values": [ Vector2( 0, -550 ), Vector2( 1473.05, -3358.75 ), Vector2( 1473.05, -3358.75 ), Vector2( 0, -550 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "zoom1_2"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Character/Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.9, 4.5, 5 ),
+"transitions": PoolRealArray( 1, 1, -0.5, -0.5, -2 ),
+"update": 0,
+"values": [ Vector2( 3, 3 ), Vector2( 3, 3 ), Vector2( 12.01, 12.01 ), Vector2( 12.01, 12.01 ), Vector2( 3, 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Character/Camera2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.9, 4.5, 5 ),
+"transitions": PoolRealArray( 1, -0.5, -0.5, -2 ),
+"update": 0,
+"values": [ Vector2( 0, -550 ), Vector2( -280, -5270.11 ), Vector2( -280, -5270.11 ), Vector2( 0, -550 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -166,6 +206,34 @@ tracks/1/keys = {
 "values": [ Vector2( 0, -746.46 ), Vector2( 2000, -3600 ) ]
 }
 
+[sub_resource type="Animation" id=13]
+resource_name = "zoom1_2"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Character/Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.9, 5.5, 6 ),
+"transitions": PoolRealArray( 1, 1, -0.5, -0.5, -2 ),
+"update": 0,
+"values": [ Vector2( 3, 3 ), Vector2( 3, 3 ), Vector2( 12.01, 12.01 ), Vector2( 12.01, 12.01 ), Vector2( 3, 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Character/Camera2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.9, 5.5, 6 ),
+"transitions": PoolRealArray( 1, -0.5, -0.5, -2 ),
+"update": 0,
+"values": [ Vector2( 0, -550 ), Vector2( -227.76, -5277.47 ), Vector2( -227.76, -5277.47 ), Vector2( 0, -550 ) ]
+}
+
 [sub_resource type="Animation" id=9]
 resource_name = "zoom2"
 length = 5.0
@@ -179,7 +247,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.9 ),
 "transitions": PoolRealArray( 1, 1, -0.5 ),
 "update": 0,
-"values": [ Vector2( 2, 2 ), Vector2( 2, 2 ), Vector2( 9, 9 ) ]
+"values": [ Vector2( 2, 2 ), Vector2( 2, 2 ), Vector2( 12, 12 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../Character/Camera2D:offset")
@@ -191,7 +259,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.2, 0.9 ),
 "transitions": PoolRealArray( 1, -0.5 ),
 "update": 0,
-"values": [ Vector2( 0, -746.46 ), Vector2( 2000, -3600 ) ]
+"values": [ Vector2( 0, -746.46 ), Vector2( 2659.59, -1716.5 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -327,6 +395,7 @@ position = Vector2( 818.716, 75.791 )
 [node name="virus idle 1" type="Sprite" parent="."]
 visible = false
 position = Vector2( 2276.8, -6452.17 )
+scale = Vector2( 0.5, 0.5 )
 z_index = 9
 texture = ExtResource( 1 )
 
@@ -576,12 +645,14 @@ anims/Move = SubResource( 4 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="manuta"]
 stream = ExtResource( 15 )
+max_distance = 1e+009
 
 [node name="Button" parent="." instance=ExtResource( 16 )]
-position = Vector2( 1703.71, -1338.69 )
+position = Vector2( 1452.37, -1346.09 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Button"]
-anims/zoom1 = SubResource( 5 )
+anims/zoom1_1 = SubResource( 5 )
+anims/zoom1_2 = SubResource( 12 )
 anims/zoom2 = SubResource( 6 )
 
 [node name="Button2" parent="." instance=ExtResource( 16 )]
@@ -591,6 +662,7 @@ which = 2
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Button2"]
 anims/zoom1 = SubResource( 5 )
+anims/zoom1_2 = SubResource( 13 )
 
 [node name="Button3" parent="." instance=ExtResource( 16 )]
 position = Vector2( -62.1803, -2899.39 )
@@ -616,7 +688,7 @@ editor/display_folded = true
 position = Vector2( 809.029, -3064.78 )
 
 [node name="AnimatedSprite" parent="Node2D2" index="0"]
-frame = 1
+frame = 4
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D2"]
