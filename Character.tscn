@@ -25,19 +25,19 @@
 [ext_resource path="res://dissolve.shader" type="Shader" id=23]
 [ext_resource path="res://icon.png" type="Texture" id=24]
 
-[sub_resource type="StreamTexture" id=8]
-flags = 13
+[sub_resource type="StreamTexture" id=1]
+flags = 4
 load_path = "res://.import/virus jump 7.png-66556a6c096b55ac51055a38501fa2df.stex"
 
-[sub_resource type="StreamTexture" id=9]
-flags = 13
+[sub_resource type="StreamTexture" id=2]
+flags = 4
 load_path = "res://.import/virus jump 6.png-97e0f5af5c2ce66bb2178e7f2b823ab9.stex"
 
-[sub_resource type="StreamTexture" id=10]
-flags = 13
+[sub_resource type="StreamTexture" id=3]
+flags = 4
 load_path = "res://.import/virus jump 5.png-d853dac57b862e9bd349df0ff7a17f29.stex"
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
@@ -54,7 +54,7 @@ animations = [ {
 "name": "walk",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 13 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 13 ), SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ) ],
 "loop": false,
 "name": "land",
 "speed": 40.0
@@ -70,20 +70,19 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="OccluderPolygon2D" id=7]
+[sub_resource type="OccluderPolygon2D" id=5]
 closed = false
 polygon = PoolVector2Array( -168.03, -195.878, -264.395, -27.2404, -286.633, 311.889, 263.757, 311.889, 267.464, -49.4784, 215.575, -179.2, 121.063, -247.767, -21.6302, -260.739 )
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 66.34
 height = 13.0576
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 22.2425
 height = 95.0048
 
-[sub_resource type="Animation" id=6]
-resource_name = "Dissolve"
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Dissolve:material:shader_param/disolve_proc")
 tracks/0/interp = 1
@@ -145,7 +144,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=9]
 render_priority = 2
 shader = ExtResource( 23 )
 shader_param/green_tint = null
@@ -160,13 +159,12 @@ has_swimp = true
 [node name="CharacterSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
 z_index = 1
-frames = SubResource( 3 )
+frames = SubResource( 4 )
 animation = "idle"
-frame = 3
 playing = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterSprite"]
-occluder = SubResource( 7 )
+occluder = SubResource( 5 )
 
 [node name="virus tep fara picioare" type="Sprite" parent="CharacterSprite"]
 visible = false
@@ -175,22 +173,22 @@ texture = ExtResource( 21 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 2.66, 11.59 )
-shape = SubResource( 1 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2( 1.60422, 80.3085 )
 rotation = 1.5708
-shape = SubResource( 2 )
+shape = SubResource( 7 )
 
 [node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 22 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Dissolve = SubResource( 6 )
+anims/Dissolve = SubResource( 8 )
 
 [node name="Dissolve" type="Sprite" parent="."]
 visible = false
-material = SubResource( 5 )
+material = SubResource( 9 )
 position = Vector2( -1.16552, 11.3965 )
 scale = Vector2( 3.081, 3.152 )
 z_index = 1

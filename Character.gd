@@ -12,6 +12,8 @@ export var LOW_JUMP_MULTIPLIER: float = 2.0
 export var has_tepi = false
 var is_tepos = false
 
+onready var camera : Camera2D = $Camera2D
+
 export var has_swimp = false
 var is_swim = false
 

@@ -13,15 +13,14 @@ func on_button_press(body) -> void:
 		
 	if body.name == "Character" and !is_pressed:
 		$AnimationPlayer.play("Pressed")
-		yield(get_tree().create_timer(0.42), "timeout")
-		if which != 3:
-			$AnimationPlayer2.play("zoom1")
-		else:
-			print(which)
-			$AnimationPlayer2.play("zoom2")
-		is_pressed = true
 		body.remove_camera_limits()
-		
+		yield(get_tree().create_timer(0.42), "timeout")		
+		if which != 3:
+			get_node("../Button/AnimationPlayer2").play("zoom1")
+		else:
+			get_node("../Button/AnimationPlayer2").play("zoom2")
+		is_pressed = true
+
 	if which == 1:
 		get_node("../manuta/AnimationPlayer").play("Move")
 	if which == 2:
